@@ -1,0 +1,404 @@
+/* main.css */
+
+:root {
+	/* Colours */
+	--backgroundColor: #0D0D0D;
+	--textColor: #F2F2F2;
+	--mouseOverColor: #FF00FF;
+	--headerBackgroundColor: #000000;
+	--headingTextColor: #FFFFFF;
+	--buttonBackgroundColor: #262626;
+
+	/* Font */
+	--normalWeight: 400;
+	--lightWeight: 300;
+
+	/* Image Sizes */
+	--headShotWidth: 10rem;
+	--externalLogoHeight: 2rem;
+}
+
+* {
+	font-family: 'Roboto', sans-serif;
+	font-weight: var(--normalWeight);
+	text-decoration: none;
+	margin-left: 0;
+	margin-right: 0;
+	/*margin-top: 0;*/
+	box-sizing: border-box;
+	color: var(--textColor);
+}
+
+body {
+	background: var(--backgroundColor);
+	margin-top: 0;
+}
+
+#header, #footer {
+	background: var(--headerBackgroundColor);
+}
+
+#headerImages {
+	position: relative;
+	height: var(--headShotWidth);
+	width: 100%;
+}
+
+#hsp {
+	width: var(--headShotWidth);
+}
+
+#headshot {	
+	width: var(--headShotWidth);
+	border-radius: 50%;
+
+	/* Centre */
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, 0);
+}
+
+#hnp {
+	display: flex;
+	justify-content: center;
+
+	/* Centre */
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#headname { 
+	max-width: 100%;
+	max-height: var(--headShotWidth);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: var(--lightWeight);
+	color: var(--headingTextColor);
+}
+
+#title {
+}
+
+.bulk_text {
+	/*min-height: calc(100% ll- 10%)*/
+}
+
+.footer {
+	/*min-height: calc(10%);*/
+}
+
+.main_body {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.blog {
+	display: inline-block;
+	width: 50%;
+	vertical-align:top;
+	padding: 0 3%;
+}
+
+.blog > img {
+	display: block;
+	width: min(800px, 80%);
+	margin: 0 auto;
+}
+
+/*
+.blog * {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+*/
+
+.videos {
+	width:49%;
+	display: inline-block;
+	vertical-align:top;
+}
+
+/* Container for youtube video and description */
+.youtube-vid {
+	text-align: center;
+	width: 100%;
+	margin: 1rem auto;
+}
+
+/* Embedded youtube video */
+.iframe-wrapper {
+	display: inline-block;
+	width: 45%; 
+	min-width: 300px; 
+	height: 100%; 
+	vertical-align: top;
+}
+
+.youtube-embed {
+	width: 2; /* random value */
+	position: relative;
+	padding-top: 56%;
+}
+
+.youtube-embed iframe {
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
+}
+
+/* Description for each youtube video */
+.youtube-description {
+	position: relative;
+	text-align: left;
+	display: inline-block;
+	width: 50%; 
+	min-width: 300px; 
+	vertical-align: top;
+	height: 300px;
+	overflow-wrap: break-word;
+	overflow: hidden;
+	padding-left: 1rem;
+}
+
+/* Thanks to Love Trivedi from stackoverflow.
+https://stackoverflow.com/questions/18651345/gradient-opacity-on-the-bottom-of-div
+*/
+.gradient-back {
+	position:absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    height:50px;
+    background: -moz-linear-gradient(top,  rgba(137,255,241,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(137,255,241,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0089fff1', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+.page-description {
+	margin: 1rem 5%;
+}
+
+.video-page-list {
+	text-align: center;	
+}
+
+.video-page-list > div {
+	width: 24%;
+	min-width: 20rem;
+	display: inline-block;
+}
+
+.video-page-list .iframe-wrapper {
+	width: 90%;
+}
+
+/* The videos under video pages do not have a description, 
+so I'm getting rid of the excess space. */
+.video-page-list .youtube-description {
+	padding-top: 0.5rem;
+	height: auto;
+	width: 90%;
+}
+
+.video-page-list h2 {
+	text-align: left;
+	font-size: 1.15rem;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.error {
+	color: #f00;
+	background-color: #000;
+}
+
+.button {
+	background: var(--buttonBackgroundColor);
+	width: 20%;
+	min-width: 10rem;
+	display: inline-block;
+	height: 4rem;
+	position: relative;
+	border: 0.3vw solid var(--headerBackgroundColor);
+	font-size: 1rem;
+}
+
+.links > * > * {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	left: 50%;
+}
+
+.links > * > * > * {
+	text-align: center;
+}
+
+.links td {
+	padding: 0.75rem;
+}
+
+.button:hover {
+	background: var(--mouseOverColor);
+}
+
+.text-link:hover {
+	color: var(--mouseOverColor);
+}
+
+.links img {
+	border-style: none;
+	width: var(--externalLogoHeight);
+	margin: auto auto;
+}
+
+.internal {
+
+}
+
+.ext-logo {
+	border-style: none;
+	width: var(--externalLogoHeight);
+	margin: auto auto;
+}
+
+.links * {
+	margin-left: auto;	
+	margin-right: auto;	
+	vertical-align: middle;
+}
+
+.wide > * {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+
+#footer-nav > * {
+	width: 33%;
+	margin: auto;
+	min-width: 10rem;
+	position: relative;
+	display: inline-block;
+
+	top: 50%;
+}
+
+.centre-div {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#foot-int-links {
+
+}
+
+#back-to-top {
+}
+
+.foot-ext-links {
+	
+}
+
+#copyright {
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.textbox {
+	background: var(--buttonBackgroundColor);
+}
+
+.form {
+	margin: auto;
+	width: 90%;
+}
+
+label {
+	display: inline-block;
+	width: 6rem;
+}
+
+.form-field {
+	margin: 0.5rem 0;
+}
+
+.small-textbox {
+	width: calc(97% - 6rem);
+	min-width: min(100%, 16rem);
+}
+
+.large-textbox {
+	width: 100%;
+}
+
+#CV {
+	margin: 1rem;
+}
+
+@media screen and (max-width:700px) {
+	.links > * {
+		width: 33.333%;
+	}
+
+	.wide > * {
+		width: 50%;
+	}
+
+	.blog img {
+		width: 100%;
+	}
+}
+
+/* Phone */
+@media screen and (max-width:550px) {
+
+	:root {
+		--headShotWidth: 5rem;
+	}
+
+	.button {
+		width: 50%;
+	}
+
+	.wide-text {
+		width: 100%;
+	}
+
+	.wide > * {
+		width: 100%;
+	}
+
+	.blog {
+		width: 100%;
+	}
+
+	.blog * {
+		padding-left: 3%;
+		padding-right: 3%;	
+	}
+
+	.videos {
+		width: 100%;
+	}
+}
+
+/* Thin phone */
+@media screen and (max-width:370px) {
+	.button {
+		width: 100%;
+	}
+}
