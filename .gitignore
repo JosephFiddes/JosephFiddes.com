@@ -1,3 +1,6 @@
+# Local files.
+_bIsLocal.txt
+
 # Server-side files.
 .htaccess
 error_log

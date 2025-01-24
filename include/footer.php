@@ -6,7 +6,7 @@
 					<ul style="list-style-type: none;">
 						<li><a class="text-link" href="./">Home</a></li>
 						<li><a class="text-link" href="music.php">Music</a></li>
-						<li><a class="text-link" href="ondes.php">Ondes Martenot</a></li>
+						<!-- <li><a class="text-link" href="ondes.php">Ondes Martenot</a></li> -->
 						<li><a class="text-link" href="CV.php">CV</a></li>
 						<li><a class="text-link" href="contact.php">Contact</a></li>
 					</ul>
@@ -31,9 +31,9 @@
 				<div class="centre-div">
 					<table>
 						<tr>
-							<td><a href="redirect/twitter.php" target="_blank">
+							<!-- <td><a href="redirect/twitter.php" target="_blank">
 								<img class="ext-logo" src="./img/logos/twitter_logo.png">
-								</a></td>
+								</a></td> -->
 							<td><a href="redirect/twitch.php" target="_blank">
 								<img class="ext-logo" src="./img/logos/twitch_logo.png">
 								</a></td>
@@ -52,6 +52,6 @@
 			</div>
 		</div>
 
-		<p id="copyright">&#x00A9; Joseph Fiddes 2022. Header text based on &#x201C;Voyage Fantastique&#x201D; by <a href="https://www.iconian.com" class="text-link">Iconian Fonts</a>.</p>
+		<p id="copyright">&#x00A9; Joseph Fiddes 2022-2025. Header text based on &#x201C;Voyage Fantastique&#x201D; by <a href="https://www.iconian.com" class="text-link">Iconian Fonts</a>.</p>
 	</div>
 </body>

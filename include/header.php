@@ -1,3 +1,12 @@
+<!--
+TODO:
+
+ - Put something bottom left of screen.
+ - Make YouTube video titles clickable.
+ - Setup process for automatically updating CV.
+ - Decrease size of logos (should be 64x64 at most).
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,43 +37,49 @@
 		<a href="./">
 			<table id="headerImages">
 				<tr>
-				<td id="hsp"><img id="headshot" src="./img/headshot/large.jpg"></td>
-				<td id="hnp"><img id="headname" src="./img/name/thinner.png"></td>
+					<td id="hsp"><img id="headshot" src="./img/headshot/large.jpg"></td>
+					<td id="hnp">
+						<img id="headname" src="./img/name/thinner.png">
+					</td>
 				</tr>
 			</table>
 		</a>
 
 		<!-- Social media links -->
 		<div class="links desktop-only">
-			<a class="button" href="redirect/twitter.php" target="_blank">
+			<!-- <a class="button" href="redirect/twitter.php" target="_blank">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/twitter_logo.png"></td>
 						<td>twitter</td>
 					</tr>
 				</table>
-			</a><a class="button" href="redirect/twitch.php" target="_blank">
+			</a> -->
+			<a class="button" href="redirect/twitch.php" target="_blank">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/twitch_logo.png"></td>
 						<td>twitch</td>
 					</tr>
 				</table>
-			</a><a class="button" href="redirect/github.php" target="_blank">
+			</a>
+			<a class="button" href="redirect/github.php" target="_blank">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/github_logo.png"></td>
 						<td>github</td>
 					</tr>
 				</table>
-			</a><a class="button" href="redirect/linkedin.php" target="_blank">
+			</a>
+			<a class="button" href="redirect/linkedin.php" target="_blank">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/linkedin_logo.png"></td>
 						<td>linkedin</td>
 					</tr>
 				</table>
-			</a><a class="button" href="redirect/youtube.php" target="_blank">
+			</a>
+			<a class="button" href="redirect/youtube.php" target="_blank">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/yt_logo.png"></td>
@@ -80,9 +95,9 @@
 				<div class="centre-div">
 					<table>
 						<tr>
-							<td><a href="redirect/twitter.php" target="_blank">
+							<!-- <td><a href="redirect/twitter.php" target="_blank">
 								<img class="ext-logo" src="./img/logos/twitter_logo.png">
-								</a></td>
+								</a></td> -->
 							<td><a href="redirect/twitch.php" target="_blank">
 								<img class="ext-logo" src="./img/logos/twitch_logo.png">
 								</a></td>
@@ -104,13 +119,17 @@
 		<div class="links">
 			<a class="button internal" href="./">
 				<table><tr><td>HOME</td></tr></table>
-			</a><a class="button internal" href="music.php">
+			</a>
+			<a class="button internal" href="music.php">
 				<table><tr><td>MUSIC</td></tr></table>
-			</a><a class="button internal wide-text" href="ondes.php">
+			</a>
+			<!-- <a class="button internal wide-text" href="ondes.php">
 				<table><tr><td>ONDES MARTENOT</td></tr></table>
-			</a><a class="button internal" href="CV.php">
+			</a> -->
+			<a class="button internal" href="CV.php">
 				<table><tr><td>CV</td></tr></table>
-			</a><a class="button internal" href="contact.php">
+			</a>
+			<a class="button internal" href="contact.php">
 				<table><tr><td>CONTACT</td></tr></table>
 			</a>
 		</div>
