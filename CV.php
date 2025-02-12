@@ -3,11 +3,14 @@
 ?>
 
 	<div id="CV">
+		<!-- Use class 'dont-print' in order to make an element not appear on the PDF. -->
+		<!-- Use class 'hide' in order to make an element not appear on the web (but still appear on the PDF). -->
+
 		<h1>Joseph Fiddes - GradIEAust</h1>
 		<p>Master of Mechatronics Engineering graduate from the University of Melbourne.</p>
 
 		<!-- Education -->
-		<h1>Tertiary Education </h1>
+		<h2>Tertiary Education </h2>
 
 		<h3>Master of Mechatronics Engineering (The University of Melbourne) (2023-2024)</h3>
 		<p>My Weighted Average Mark for this course was 74.368.</p>
@@ -23,13 +26,13 @@
 		<p>My Weighted Average Mark for this course was 84.167</p>
 
 		<!-- Engineering -->
-		<h1>Engineering </h1>
+		<h2>Engineering </h2>
 
 		<h3>Software Engineering Intern at CSIRO (July-October 2023)</h3>
 		<p> I was creating an inter-process visualisation program between CSIRO's Workspace and Epic Games' Unreal Engine 5, in order to facilitate high quality rendering of scientific data.</p>
 
 		<!-- Music -->
-		<h1>Music</h1>
+		<h2>Music</h2>
 
 		<h3>Pianist at Fairway Bayside Age Care (2019-2023)</h3>
 		<p>I played piano once a fortnight at Fairway Bayside Age Care. This job required required the ability to learn new material quickly, as well as adapt on the fly to performance situations.</p>
@@ -41,7 +44,7 @@
 		<p>I play keys with ‘The Brewers’, a local blues band known for ‘full-bodied blues’.</p>
 
 		<!-- Personal Interests -->
-		<h1>Personal Interests</h1>
+		<h2>Personal Interests</h2>
 		<p>My two main interests are music and technology. I have created a few short musical compositions, as well as some IT projects.</p>
 
 		<h3>Pieces I've written:</h3>
@@ -59,16 +62,15 @@
 		<p>I've also converted CT scans into a rough 3D model of my own brain.</p>
 
 		<!-- Skills -->
-		<h1>Skills</h1>
+		<h2>Skills</h2>
 		<p>In descending order of fluency, I can code in: </p>
-			<ul>
-				<li>Python</li>
-				<li>MATLAB</li>
-				<li>C/C++</li>
-				<li>Java</li>
-				<li>PHP</li>
-			</ul>
-		</p>
+		<ul>
+			<li>Python</li>
+			<li>MATLAB</li>
+			<li>C/C++</li>
+			<li>Java</li>
+			<li>PHP</li>
+		</ul>
 
 		<p>I am also skilled with Microsoft Excel, and have created spreadsheets with macros utilising VBA. For example, I created a program in excel which calculates the number of university credits I earned for groups of university subjects, ensuring I did not enrol in the incorrect amount of subjects within a particular category.</p>
 
@@ -76,12 +78,27 @@
 
 		<p>I recently took a short course in PCB design with KiCad. Additionally, I am experienced with CAD software - SolidWorks in particular.</p>
 
+
 		<!-- Website -->
-		<h1>Website</h1>
-		<p>The website you are currently browsing was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+		<h2>Website</h2>
+		<p class = "dont-print">The website you are currently browsing was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+
+		<p class = "hide">This document was generated on my website! The website was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+	</div>
+
+	<div class="links">
+		<button class="button centred" href="" target="_blank" id="print-cv-button">
+			<table>
+				<tr>
+					<td>PRINT CV</td>
+				</tr>
+			</table>
+		</button>
 	</div>
 
 
+	<!--<script type="module" src="scripts/pdf-lib.js"></script>-->
+	<script type="module" src="scripts/printCV.js"></script>
 
 	<?php
 		include_once 'include/footer.php';

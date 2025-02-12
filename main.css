@@ -1,5 +1,9 @@
 /* main.css */
 
+/* TODO: 
+- Fix buttons appearing only on the left side of screen on phone mode. 
+*/
+
 :root {
 	/* Colours */
 	--backgroundColor: #0D0D0D;
@@ -403,4 +407,15 @@ label {
 	.button {
 		width: 100%;
 	}
+}
+
+.centred {
+	margin: 0 auto;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+
+.hide {
+	display: none;
 }
