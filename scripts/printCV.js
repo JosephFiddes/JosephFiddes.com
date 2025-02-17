@@ -1,9 +1,16 @@
 // TODO:
 // - Handle lists.
-// - Handle links.
+// - Refactor such that the header and regular text are drawn in the same function.
 
 // PDFLib comes from pdf-lib.js
 import "./pdf-lib.js"
+
+const textColorR = 0;
+const textColorG = 0.1;
+const textColorB = 0.2;
+
+const pageLRMargin = 50;
+const pageTBMargin = 50;
 
 window.onload=function() {
 	var printCVButton = document.querySelector('button#print-cv-button');
@@ -46,6 +53,54 @@ function getFontInfoFromNodeName(nodeName) {
 	return fontInfo;
 }
 
+function newPage(doc, headerFont) {
+	var page = doc.addPage(PDFLib.PageSizes.A4);
+	
+	// Add header.
+	const lines = [
+		"Email: fiddj13@live.com.au",
+		"Phone: 0434 497 420",
+		"LinkedIn: https://www.linkedin.com/in/joseph-fiddes-320285198/"
+	]
+
+	const links = [
+		"mailto:fiddj13@live.com.au",
+		"",
+		"https://www.linkedin.com/in/joseph-fiddes-320285198/"
+	]
+
+	const fontSize = 8;
+	const lineGap = 3;
+	const lineWrap = (fontSize) => { return lineGap + fontSize; };
+	const distFromTop = 10;
+	const pageHeight = page.getSize().height;
+	var elementOffset = fontSize;
+
+	for (var i=0; i<lines.length; i++) {
+		page.drawText(lines[i], {
+				x: pageLRMargin,
+				y: pageHeight - distFromTop - elementOffset,
+				size: fontSize,
+				font: headerFont,
+				color: PDFLib.rgb(textColorR, textColorG, textColorB),
+			});
+
+		if (links[i]) {
+			var	link_width = headerFont.widthOfTextAtSize(lines[i], fontSize);
+			createLink(page, links[i], {
+				x: pageLRMargin,
+				y: pageHeight - distFromTop - elementOffset - 5,
+				w: link_width,
+				h: fontSize + 5,
+			});
+		}
+
+		elementOffset += lineWrap(fontSize);
+	}
+
+	return page;
+}
+
 async function printCVFunc() {
 	const CVElement = document.querySelector('div#CV');
 	var CVElementArray = Array.from(CVElement.children);
@@ -53,7 +108,7 @@ async function printCVFunc() {
 		return !element.classList.contains("dont-print");
 	});
 
-	console.log(CVElementArray);
+	//console.log(CVElementArray);
 
 	const pdfDoc = await PDFLib.PDFDocument.create();
 	const font = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRoman);
@@ -61,13 +116,12 @@ async function printCVFunc() {
 	const lineGap = 3;
 	const lineWrap = (fontSize) => { return lineGap + fontSize; };
 	
-	var page = pdfDoc.addPage(PDFLib.PageSizes.A4);
+	var page = newPage(pdfDoc, font);
 	const pageDimensions = page.getSize();
 	const pageWidth = pageDimensions.width;
 	const pageHeight = pageDimensions.height;
 
-	const pageLRMargin = 50;
-	const pageTBMargin = 50;
+	
 	const textBBWidth = pageWidth - 2 * pageLRMargin;
 	const textBBHeight = pageHeight - 2 * pageTBMargin;
 
@@ -76,7 +130,8 @@ async function printCVFunc() {
 	var numCVElements = CVElementArray.length;
 	var CVElementsText = [];
 	for (let n = 0; n < numCVElements; n++) {
-		var fontInfo = getFontInfoFromNodeName(CVElementArray[n].nodeName);
+		var nodeName = CVElementArray[n].nodeName;
+		var fontInfo = getFontInfoFromNodeName(nodeName);
 		var fontSize = fontInfo.fontSize;
 		
 		elementHeight += fontSize;
@@ -90,6 +145,7 @@ async function printCVFunc() {
 
 		// Cache various properties of element to be used later.
 		CVElementsText.push({
+			nodeName: nodeName,
 			fontSize: fontSize,
 			sectionGap: fontInfo.sectionGap,
 			bHeading: fontInfo.bHeading,
@@ -125,24 +181,45 @@ async function printCVFunc() {
 
 		if (bNewPage) {
 			// New page needed, reset elementOffset.
-			page = pdfDoc.addPage(PDFLib.PageSizes.A4);
+			page = newPage(pdfDoc, font);
 			elementOffset = 0;
 		}
 
 		elementOffset += CVElementsText[n].fontSize;
+		var links = [];
+		var total_lines_in_element = CVElementsText[n].textLines.length;
 		// Draw the text
-		for (let l = 0; l < CVElementsText[n].textLines.length; l++) {
+		for (let l = 0; l < total_lines_in_element; l++) {
 			page.drawText(CVElementsText[n].textLines[l], {
 				x: pageLRMargin,
 				y: pageHeight - pageTBMargin - elementOffset,
 				size: CVElementsText[n].fontSize,
 				font: font,
-				color: PDFLib.rgb(0, 0.1, 0.2),
+				color: PDFLib.rgb(textColorR, textColorG, textColorB),
 			});
 
-			if (l != CVElementsText[n].textLines.length - 1) {
+			// Add line-wrap if line is not final in paragraph.
+			if (l != total_lines_in_element - 1) {
 				elementOffset += lineWrap(CVElementsText[n].fontSize);
 			}
+		}
+
+		console.log(CVElementsText[n]);
+		// Add hyperlink if element is link.
+		if (CVElementsText[n].nodeName == "A") {
+			if (total_lines_in_element > 1) {
+				var link_width = textBBWidth;
+			} else {
+				var link_width = font.widthOfTextAtSize(CVElementsText[n].textLines[0], 
+														CVElementsText[n].fontSize);
+			}
+
+			createLink(page, CVElementArray[n].href, {
+				x: pageLRMargin,
+				y: pageHeight - pageTBMargin - elementOffset - 5,
+				w: link_width,
+				h: CVElementsText[n].height + 5,
+			});
 		}
 
 		elementOffset += CVElementsText[n].sectionGap;
@@ -152,6 +229,32 @@ async function printCVFunc() {
 
 	download(pdfBytes, "CV.pdf", "application/pdf");
 }
+
+function createLink(page, uri, pageLinkOptions) {
+	var link = createPageLinkAnnotation(page, uri, pageLinkOptions);
+	page.node.addAnnot(link);
+}
+
+// Function to create links
+// https://github.com/Hopding/pdf-lib/issues/555#issuecomment-670241308
+const createPageLinkAnnotation = (page, uri, pageLinkOptions) =>
+  page.doc.context.register(
+    page.doc.context.obj({
+      Type: 'Annot',
+      Subtype: 'Link',
+      Rect: [pageLinkOptions.x,
+      		 pageLinkOptions.y,
+      		 pageLinkOptions.x + pageLinkOptions.w,
+      		 pageLinkOptions.y + pageLinkOptions.h],
+      // Border: [0, 0, 2],
+      // C: [0, 0, 1],
+      A: {
+        Type: 'Action',
+        S: 'URI',
+        URI: PDFLib.PDFString.of(uri),
+      },
+    }),
+  );
 
 // Function to download data to a file
 // Source: Kanchu on StackOverflow

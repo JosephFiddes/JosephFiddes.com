@@ -31,6 +31,40 @@
 		<h3>Software Engineering Intern at CSIRO (July-October 2023)</h3>
 		<p> I was creating an inter-process visualisation program between CSIRO's Workspace and Epic Games' Unreal Engine 5, in order to facilitate high quality rendering of scientific data.</p>
 
+		<!-- Skills -->
+		<h2>Skills</h2>
+		<p>In descending order of fluency, I can code in: </p>
+		<ul>
+			<li>Python</li>
+			<li>MATLAB</li>
+			<li>C/C++</li>
+			<li>Java</li>
+			<li>PHP</li>
+		</ul>
+
+		<h3>Programs I've created:</h3>
+		<a href="https://diminished-9th.itch.io/mm-rr" class="text-link"> Maze Mayhem - Rocket Rumble: (click here to check it out)</a>
+
+		<br class = "dont-print">
+
+		<p>'Maze Mayhem - Rocket Rumble' is a video game based on the premise of controlling two separate games at once.</p>
+
+		<p>I've also written a program that takes MIDI drumkit inputs and converts them to keypresses, allowing me to control my computer using an electric drumkit.</p>
+
+		<p>I've also converted CT scans into a rough 3D model of my own brain.</p>
+
+		<p>I am also skilled with Microsoft Excel, and have created spreadsheets with macros utilising VBA. For example, I created a program in excel which calculates the number of university credits I earned for groups of university subjects, ensuring I did not enrol in the incorrect amount of subjects within a particular category.</p>
+
+		<p>I have some experience working with the game engines Unity and Unreal. I have also made frequent use of Git.</p>
+
+		<p>I recently took a short course in PCB design with KiCad. Additionally, I am experienced with CAD software - SolidWorks in particular.</p>
+
+		<!-- Website -->
+		<h2>Website</h2>
+		<p class = "dont-print">The website you are currently browsing was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+
+		<p class = "hide">This document was generated on my website! The website was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+
 		<!-- Music -->
 		<h2>Music</h2>
 
@@ -48,42 +82,11 @@
 		<p>My two main interests are music and technology. I have created a few short musical compositions, as well as some IT projects.</p>
 
 		<h3>Pieces I've written:</h3>
-		<p>Thursday Afternoon Meditations: <a href="https://youtu.be/BEfijj0oqMM" class="text-link">(click here to listen)</a></p>
+		<a href="https://youtu.be/BEfijj0oqMM" class="text-link">Thursday Afternoon Meditations: (click here to listen) </a>
 
-		<p>Piece on the Theme of Struggle <a href="https://youtu.be/9VNIhaLOq7E" class="text-link">(click here to listen)</a></p>
+		<br class = "dont-print"><br class = "dont-print">
 
-		<h3>Programs I've created:</h3>
-		<p> Maze Mayhem - Rocket Rumble: <a href="https://diminished-9th.itch.io/mm-rr" class="text-link">(click here check it out)</a></p>
-
-		<p>'Maze Mayhem - Rocket Rumble' is a video game based on the premise of controlling two separate games at once.</p>
-
-		<p>I've also written a program that takes MIDI drumkit inputs and converts them to keypresses, allowing me to control my computer using an electric drumkit.</p>
-
-		<p>I've also converted CT scans into a rough 3D model of my own brain.</p>
-
-		<!-- Skills -->
-		<h2>Skills</h2>
-		<p>In descending order of fluency, I can code in: </p>
-		<ul>
-			<li>Python</li>
-			<li>MATLAB</li>
-			<li>C/C++</li>
-			<li>Java</li>
-			<li>PHP</li>
-		</ul>
-
-		<p>I am also skilled with Microsoft Excel, and have created spreadsheets with macros utilising VBA. For example, I created a program in excel which calculates the number of university credits I earned for groups of university subjects, ensuring I did not enrol in the incorrect amount of subjects within a particular category.</p>
-
-		<p>I have some experience working with the game engines Unity and Unreal. I have also made frequent use of Git.</p>
-
-		<p>I recently took a short course in PCB design with KiCad. Additionally, I am experienced with CAD software - SolidWorks in particular.</p>
-
-
-		<!-- Website -->
-		<h2>Website</h2>
-		<p class = "dont-print">The website you are currently browsing was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
-
-		<p class = "hide">This document was generated on my website! The website was built from scratch, using HTML, CSS, JavaScript, PHP and SQL. Whenever the page is visited, it automatically sends an API request to YouTube in order to update the videos in the side panel to the most recent.</p>
+		<a href="https://youtu.be/9VNIhaLOq7E" class="text-link">Piece on the Theme of Struggle: (click here to listen)</a>
 	</div>
 
 	<div class="links">
