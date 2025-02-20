@@ -5,8 +5,12 @@
 import "./pdf-lib.js"
 
 const g_textColorR = 0;
-const g_textColorG = 0.1;
-const g_textColorB = 0.2;
+const g_textColorG = 0.05;
+const g_textColorB = 0.1;
+
+const g_pageColorR = 256/256;
+const g_pageColorG = 248/256;
+const g_pageColorB = 230/256;
 
 const g_pageLRMargin = 50;
 const g_pageTBMargin = 70;
@@ -96,9 +100,19 @@ function newPage(doc) {
 		"https://www.linkedin.com/in/joseph-fiddes-320285198/"
 	]
 
-	const distFromTop = 10;
-	const pageHeight = page.getSize().height;
+	const pageDimensions = page.getSize();
+	const pageHeight = pageDimensions.height;
+	const pageWidth = pageDimensions.width;
 
+	page.drawRectangle({
+		x: 0,
+		y: 0,
+		width: pageWidth,
+		height: pageHeight,
+		color: PDFLib.rgb(g_pageColorR, g_pageColorG, g_pageColorB),
+	})
+
+	const distFromTop = 10;
 	const fontInfo = getFontInfoFromNodeName("HEADER");
 
 	drawText(page, lines, {
