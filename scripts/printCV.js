@@ -1,16 +1,22 @@
 // TODO:
 // - Handle lists.
-// - Refactor such that the header and regular text are drawn in the same function.
 
 // PDFLib comes from pdf-lib.js
 import "./pdf-lib.js"
 
-const textColorR = 0;
-const textColorG = 0.1;
-const textColorB = 0.2;
+const g_textColorR = 0;
+const g_textColorG = 0.1;
+const g_textColorB = 0.2;
 
-const pageLRMargin = 50;
-const pageTBMargin = 50;
+const g_pageLRMargin = 50;
+const g_pageTBMargin = 70;
+
+const g_fontstrings = [
+	PDFLib.StandardFonts.TimesRoman,
+	PDFLib.StandardFonts.TimesRomanItalic,
+];
+
+var g_fonts = [];
 
 window.onload=function() {
 	var printCVButton = document.querySelector('button#print-cv-button');
@@ -20,30 +26,47 @@ window.onload=function() {
 function getFontInfoFromNodeName(nodeName) {
 	var fontInfo = {};
 	switch (nodeName) {
+		case "HEADER":
+			fontInfo = {
+				fontIndex: 0,
+				fontSize: 8,
+				lineGap: 3,
+				sectionGap: 2,
+				bHeading: false,
+			};
+			break;
 		case "H1":
 			fontInfo = {
+				fontIndex: 0,
 				fontSize: 20,
+				lineGap: 3,
 				sectionGap: 10,
 				bHeading: true,
 			};
 			break;
 		case "H2":
 			fontInfo = {
+				fontIndex: 0,
 				fontSize: 18,
+				lineGap: 3,
 				sectionGap: 4,
 				bHeading: true,
 			};
 			break;
 		case "H3":
 			fontInfo = {
+				fontIndex: 1, // Italic
 				fontSize: 14,
+				lineGap: 3,
 				sectionGap: 5,
 				bHeading: true,
 			};
 			break;
 		default:
 			fontInfo = {
+				fontIndex: 0,
 				fontSize: 12,
+				lineGap: 3,
 				sectionGap: 6,
 				bHeading: false,
 			};
@@ -53,7 +76,11 @@ function getFontInfoFromNodeName(nodeName) {
 	return fontInfo;
 }
 
-function newPage(doc, headerFont) {
+function lineWrap(lineGap, fontSize) {
+	return lineGap + fontSize;
+}
+
+function newPage(doc) {
 	var page = doc.addPage(PDFLib.PageSizes.A4);
 	
 	// Add header.
@@ -69,36 +96,58 @@ function newPage(doc, headerFont) {
 		"https://www.linkedin.com/in/joseph-fiddes-320285198/"
 	]
 
-	const fontSize = 8;
-	const lineGap = 3;
-	const lineWrap = (fontSize) => { return lineGap + fontSize; };
 	const distFromTop = 10;
 	const pageHeight = page.getSize().height;
-	var elementOffset = fontSize;
+
+	const fontInfo = getFontInfoFromNodeName("HEADER");
+
+	drawText(page, lines, {
+			x: g_pageLRMargin,
+			y: pageHeight - distFromTop - fontInfo.fontSize,
+		}, 
+		true, fontInfo, links);
+
+	return page;
+}
+
+/**
+ * Draws text.
+ * @param page       The page on which the text is drawn.
+ * @param lines      The text, as an array of strings (each string is a line).
+ * @param elementPos The position the text is written (bottom-left of first line).
+ * 					 After running, elementPos.y is at the bottom-left of the final line.
+ * @param bLinks     Boolean value which expresses if there are hyperlinks to add.
+ * @param fontInfo   Various info about the font (see getFontInfoFromNodeName)
+ * @param links      The links that each line leads to when clicked.
+ * */
+function drawText(page, lines, elementPos, bLinks, fontInfo, links) {
+	// x: pageLRMargin,
+	// y: pageHeight - distFromTop - elementOffset
 
 	for (var i=0; i<lines.length; i++) {
 		page.drawText(lines[i], {
-				x: pageLRMargin,
-				y: pageHeight - distFromTop - elementOffset,
-				size: fontSize,
-				font: headerFont,
-				color: PDFLib.rgb(textColorR, textColorG, textColorB),
+				x: elementPos.x,
+				y: elementPos.y,
+				size: fontInfo.fontSize,
+				font: g_fonts[fontInfo.fontIndex],
+				color: PDFLib.rgb(g_textColorR, g_textColorG, g_textColorB),
 			});
 
-		if (links[i]) {
-			var	link_width = headerFont.widthOfTextAtSize(lines[i], fontSize);
+		if (bLinks && links[i]) {
+			var	link_width = (g_fonts[fontInfo.fontIndex]).widthOfTextAtSize(lines[i], fontInfo.fontSize);
 			createLink(page, links[i], {
-				x: pageLRMargin,
-				y: pageHeight - distFromTop - elementOffset - 5,
+				x: elementPos.x,
+				y: elementPos.y - 5,
 				w: link_width,
-				h: fontSize + 5,
+				h: fontInfo.fontSize + 5,
 			});
 		}
 
-		elementOffset += lineWrap(fontSize);
+		// Add line-wrap if line is not final in paragraph.
+		if (i != lines.length - 1) {
+			elementPos.y -= lineWrap(fontInfo.lineGap, fontInfo.fontSize);
+		}
 	}
-
-	return page;
 }
 
 async function printCVFunc() {
@@ -111,19 +160,20 @@ async function printCVFunc() {
 	//console.log(CVElementArray);
 
 	const pdfDoc = await PDFLib.PDFDocument.create();
-	const font = await pdfDoc.embedFont(PDFLib.StandardFonts.TimesRoman);
 
-	const lineGap = 3;
-	const lineWrap = (fontSize) => { return lineGap + fontSize; };
-	
-	var page = newPage(pdfDoc, font);
+	for (var i=0; i<g_fontstrings.length; i++) {
+		var embeddedFont = await pdfDoc.embedFont(g_fontstrings[i]);
+		g_fonts.push(embeddedFont);
+	}
+
+	var page = newPage(pdfDoc);
 	const pageDimensions = page.getSize();
 	const pageWidth = pageDimensions.width;
 	const pageHeight = pageDimensions.height;
 
 	
-	const textBBWidth = pageWidth - 2 * pageLRMargin;
-	const textBBHeight = pageHeight - 2 * pageTBMargin;
+	const textBBWidth = pageWidth - 2 * g_pageLRMargin;
+	const textBBHeight = pageHeight - 2 * g_pageTBMargin;
 
 	// Initial loop to prepare text to be added to PDF.
 	var elementHeight = 0;
@@ -138,22 +188,19 @@ async function printCVFunc() {
 
 		// Long lines of text need to wrap.
 		var textLines = PDFLib.breakTextIntoLines(CVElementArray[n].innerText, " ", textBBWidth, (text) => {
-			return font.widthOfTextAtSize(text, fontInfo.fontSize);
+			return (g_fonts[fontInfo.fontIndex]).widthOfTextAtSize(text, fontInfo.fontSize);
 		});
 
-		elementHeight = fontSize + (textLines.length-1) * lineWrap(fontSize);
+		elementHeight = fontSize + (textLines.length-1) * lineWrap(fontInfo.lineGap, fontSize);
 
 		// Cache various properties of element to be used later.
 		CVElementsText.push({
 			nodeName: nodeName,
-			fontSize: fontSize,
-			sectionGap: fontInfo.sectionGap,
-			bHeading: fontInfo.bHeading,
+			fontInfo: fontInfo,
 			height: elementHeight,
 			textLines: textLines,
 		});
 	}
-
 	// Print to PDF
 	var bNewPage = false;
 	var elementOffset = 0;
@@ -171,58 +218,37 @@ async function printCVFunc() {
 				break;
 			} 
 
-			newElementOffset += CVElementsText[n+i].sectionGap;
+			newElementOffset += CVElementsText[n+i].fontInfo.sectionGap;
 
 			// Prevent orphaned headings by checking if the next element needs a page break.
-			if (CVElementsText[n+i].bHeading == false) break;
+			if (CVElementsText[n+i].fontInfo.bHeading == false) break;
 
 			i += 1;
 		}
 
 		if (bNewPage) {
 			// New page needed, reset elementOffset.
-			page = newPage(pdfDoc, font);
+			page = newPage(pdfDoc);
 			elementOffset = 0;
 		}
 
-		elementOffset += CVElementsText[n].fontSize;
-		var links = [];
-		var total_lines_in_element = CVElementsText[n].textLines.length;
-		// Draw the text
-		for (let l = 0; l < total_lines_in_element; l++) {
-			page.drawText(CVElementsText[n].textLines[l], {
-				x: pageLRMargin,
-				y: pageHeight - pageTBMargin - elementOffset,
-				size: CVElementsText[n].fontSize,
-				font: font,
-				color: PDFLib.rgb(textColorR, textColorG, textColorB),
-			});
+		elementOffset += CVElementsText[n].fontInfo.fontSize;
 
-			// Add line-wrap if line is not final in paragraph.
-			if (l != total_lines_in_element - 1) {
-				elementOffset += lineWrap(CVElementsText[n].fontSize);
-			}
-		}
+		var bLink = CVElementsText[n].nodeName == "A";
+		var link = bLink ? [CVElementArray[n].href] : false;
 
-		console.log(CVElementsText[n]);
-		// Add hyperlink if element is link.
-		if (CVElementsText[n].nodeName == "A") {
-			if (total_lines_in_element > 1) {
-				var link_width = textBBWidth;
-			} else {
-				var link_width = font.widthOfTextAtSize(CVElementsText[n].textLines[0], 
-														CVElementsText[n].fontSize);
-			}
+		var elementPos = {
+			x: g_pageLRMargin,
+			y: pageHeight - g_pageTBMargin - elementOffset,
+		};
 
-			createLink(page, CVElementArray[n].href, {
-				x: pageLRMargin,
-				y: pageHeight - pageTBMargin - elementOffset - 5,
-				w: link_width,
-				h: CVElementsText[n].height + 5,
-			});
-		}
+		var orig_y = elementPos.y;
+		drawText(page, CVElementsText[n].textLines,
+			elementPos, bLink, CVElementsText[n].fontInfo, link);
 
-		elementOffset += CVElementsText[n].sectionGap;
+		// Prepare elementOffset for next draw.
+		elementOffset += -(elementPos.y - orig_y);
+		elementOffset += CVElementsText[n].fontInfo.sectionGap;
 	}
 
 	const pdfBytes = await pdfDoc.save();
