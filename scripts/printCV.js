@@ -91,13 +91,15 @@ function newPage(doc) {
 	const lines = [
 		"Email: fiddj13@live.com.au",
 		"Phone: 0434 497 420",
-		"LinkedIn: https://www.linkedin.com/in/joseph-fiddes-320285198/"
+		"LinkedIn: https://www.linkedin.com/in/joseph-fiddes-320285198/",
+		"Website: https://www.josephfiddes.com"
 	]
 
 	const links = [
 		"mailto:fiddj13@live.com.au",
 		"",
-		"https://www.linkedin.com/in/joseph-fiddes-320285198/"
+		"https://www.linkedin.com/in/joseph-fiddes-320285198/",
+		"https://www.josephfiddes.com"
 	]
 
 	const pageDimensions = page.getSize();
