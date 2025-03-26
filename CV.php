@@ -17,6 +17,14 @@
 
 		<p>Developed skills in many engineering disciplines, including (but not limited to) electrical, mechanical and software engineering, through the use of theoretical and practical projects. Skills include machine learning, controller design, automation, CAD, and use of microcontrollers.</p>
 
+		<h4>Course Highlight: Control Systems and Advanced Control Systems</h4>
+
+		<p>These two subjects were focused on the design of feedback controllers, with an emphasis on system and signal analysis. I developed plant models and designed controllers which enforced restrictions on the system's states within given design parameters. Controller strategies included PID and optimal control.</p>
+
+		<h4>Course Highlight: Dynamics and Advanced Dynamics</h4>
+
+		<p>These two subjects were focused on the behaviour of dynamic systems. Equations of motion were derived by applying forces and constraints to 3-dimensional mechanical systems, and applying Newton-Euler and the Lagrangian. These equations were then simulated numerically or solved algebraically.</p>
+
 		<h3>Bachelor of Science (The University of Melbourne) (2019-2022)</h3>
 		<p>My Weighted Average Mark for this course was 79.150</p>
 

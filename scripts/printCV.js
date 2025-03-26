@@ -8,9 +8,9 @@ const g_textColorR = 0;
 const g_textColorG = 0.05;
 const g_textColorB = 0.1;
 
-const g_pageColorR = 256/256;
-const g_pageColorG = 248/256;
-const g_pageColorB = 230/256;
+const g_pageColorR = 1; //256/256;
+const g_pageColorG = 1; //248/256;
+const g_pageColorB = 1; //230/256;
 
 const g_pageLRMargin = 50;
 const g_pageTBMargin = 70;
@@ -18,6 +18,7 @@ const g_pageTBMargin = 70;
 const g_fontstrings = [
 	PDFLib.StandardFonts.TimesRoman,
 	PDFLib.StandardFonts.TimesRomanItalic,
+	PDFLib.StandardFonts.TimesRomanBold,
 ];
 
 var g_fonts = [];
@@ -63,6 +64,15 @@ function getFontInfoFromNodeName(nodeName) {
 				fontSize: 14,
 				lineGap: 3,
 				sectionGap: 5,
+				bHeading: true,
+			};
+			break;
+		case "H4":
+			fontInfo = {
+				fontIndex: 2, // Bold
+				fontSize: 12,
+				lineGap: 3,
+				sectionGap: 6,
 				bHeading: true,
 			};
 			break;
@@ -268,8 +278,12 @@ async function printCVFunc() {
 	}
 
 	const pdfBytes = await pdfDoc.save();
+	const d = new Date();
+	const pdfName = "CV " + d.getFullYear().toString().padStart(4, "0")  + 
+		"-" + (d.getMonth() + 1).toString().padStart(2, "0") + 
+		"-" + d.getDate().toString().padStart(2, "0") + ".pdf";
 
-	download(pdfBytes, "CV.pdf", "application/pdf");
+	download(pdfBytes, pdfName, "application/pdf");
 }
 
 function createLink(page, uri, pageLinkOptions) {
