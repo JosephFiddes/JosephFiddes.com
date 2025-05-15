@@ -97,4 +97,19 @@ class Video_Info {
 
 		return $videos;
 	}
+
+	// Gets the youtube info from the youtube API, and returns it
+	// as an array of 'Video_Info's.
+	static function get_vid_info_from_youtube_api($conn, $table_name, $playlist) {
+		// Contact youtube API to get youtube data.
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+		$video_ids = get_vid_ids($curl, $playlist);
+		$video_infos = get_vid_info($video_ids, $curl);
+
+		curl_close($curl);	
+
+		return $video_infos;
+	}
 }

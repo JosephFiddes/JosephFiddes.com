@@ -225,11 +225,20 @@ function get_prev_youtube_lookup_time($conn, $table_name) {
 	return $value;
 }
 
-
 function set_prev_youtube_lookup_time($conn, $value, $table_name) {
 	mysqli_query($conn, "DELETE FROM " . $table_name);
 	mysqli_query($conn, "INSERT INTO " . $table_name . " (value) " . 
 					 "VALUES ('" . $value . "');");
+}
+
+function refresh_database($conn, $video_infos, $table_name, $lookup_time_table_name) {
+	mysqli_query($conn, "DELETE FROM " . $table_name);
+
+	foreach ($video_infos as $v) {
+		$v->add_to_database($conn, $table_name);
+	}
+
+	set_prev_youtube_lookup_time($conn, time(), $lookup_time_table_name);
 }
 
 ////////////////////////////////// MAIN //////////////////////////////////////////
@@ -237,31 +246,30 @@ function set_prev_youtube_lookup_time($conn, $value, $table_name) {
 
 // If it's been more than an hour since last API lookup:
 if (time() > get_prev_youtube_lookup_time($conn, $lookup_time_table) + API_RETRIEVE_TIME) {
-	// Contact youtube API to get youtube data.
-	$curl = curl_init();
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-	$video_ids = get_vid_ids($curl, $playlist);
-	$video_infos = get_vid_info($video_ids, $curl);
-
-	curl_close($curl);
-
-	// Replace the video info in the database.
-	mysqli_query($conn, "DELETE FROM " . $vid_info_table);
-	foreach ($video_infos as $v) {
-		$v->add_to_database($conn, $vid_info_table);
+	$api_retrieval_success = true;
+	try {
+		$video_infos = Video_Info::get_vid_info_from_youtube_api($conn, $vid_info_table, $playlist);
+	} catch (Exception $e) {
+		$api_retrieval_success = false;
 	}
 
-	set_prev_youtube_lookup_time($conn, time(), $lookup_time_table);
+	if ($api_retrieval_success) {
+		// Replace the video info in the database.
+		refresh_database($conn, $video_infos, $vid_info_table, $lookup_time_table);
 
-	console_log("Videos collected from YouTube API");
+		console_log("Videos collected from YouTube API");
+	} else {
+		// API calls unsuccessful. Grab from database instead.
+		$video_infos = Video_Info::get_vid_info_from_database($conn, $vid_info_table);
+
+		console_log("Videos collected from server database after unsuccessful attempt at collecting from the youtube API.");
+	}
 } else {
 	// Grab youtube data from database.
 	$video_infos = Video_Info::get_vid_info_from_database($conn, $vid_info_table);
 
 	console_log("Videos collected from server database");
 }
-
 
 // Display information for each video.
 foreach ($video_infos as $v) {
