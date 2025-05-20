@@ -20,11 +20,11 @@
 						// and put them on the environment variables list.
 						// Credit: Kareem
 						// https://stackoverflow.com/a/77305725
-						$env = file_get_contents(__DIR__ . "\\.env");
+						$env = file_get_contents(__DIR__ . "/.env");
 						$lines = explode("\n",$env);
 
 						foreach($lines as $line){
-							preg_match("/([^#]+)\=(.*)/",$line,$matches);
+							preg_match("/([^#]+)\=[\"']?([^\"']*)/",$line,$matches);
 							if(isset($matches[2])){ putenv(trim($line)); }
 						} 
 
