@@ -173,6 +173,7 @@ function get_vid_ids($curl, $playlist_title=null) {
 
 		if (property_exists($res, "error")) {
 			echo_error($res->error->message);
+			throw new Exception($res->error->message);
 			array_push($video_ids, "dQw4w9WgXcQ");
 			return $video_ids;
 		}
