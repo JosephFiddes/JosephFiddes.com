@@ -133,6 +133,10 @@ TODO:
 				<table><tr><td>CONTACT</td></tr></table>
 			</a>
 		</div>
+
+		<div>
+			<h1>UNDER MAINTENANCE - PLEASE BE PATIENT!!!</h1>
+		</div>
 	</div>
 
 	<script src="./scripts/header_social_media_buttons.js"></script>
