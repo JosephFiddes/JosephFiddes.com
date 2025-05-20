@@ -76,7 +76,7 @@ function addParam(&$url, $key, $value) {
 */
 function get_vid_ids($curl, $playlist_title=null) {
 	// Setup youtube API request.
-	$youtube_api_key = 'AIzaSyBuivkNTnOnoh5q8YRSLoMfS0rGx1oI7lw';
+	$youtube_api_key = getenv("YOUTUBE_API_KEY");
 	$my_channel_id = 'UCBnl9RREvCWnDPLUCcwi52Q';
 
 	$video_ids = array();
@@ -197,7 +197,7 @@ function get_vid_ids($curl, $playlist_title=null) {
 * Takes the ids of the videos necessary to retrieve as input.
 */
 function get_vid_info($video_ids, $curl) {
-	$youtube_api_key = 'AIzaSyBuivkNTnOnoh5q8YRSLoMfS0rGx1oI7lw';
+	$youtube_api_key = getenv("YOUTUBE_API_KEY");
 
 	$video_infos = array();
 
