@@ -24,8 +24,9 @@
 						$lines = explode("\n",$env);
 
 						foreach($lines as $line){
+							$line = trim($line);
 							preg_match("/([^#]+)\=[\"']?([^\"']*)/",$line,$matches);
-							if(isset($matches[2])){ putenv(trim($line)); }
+							if(isset($matches[2])){ putenv($line); }
 						} 
 
 						$lookup_time_table = "prev_youtube_lookup_time";
