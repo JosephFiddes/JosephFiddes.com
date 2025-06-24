@@ -51,7 +51,7 @@
 		</ul>
 
 		<h3>Programs I've created:</h3>
-		<a href="https://diminished-9th.itch.io/mm-rr" class="text-link"> Maze Mayhem - Rocket Rumble: (click here to check it out)</a>
+		<a href="https://diminished-9th.itch.io/mm-rr" class="text-link" target="_blank" rel="noopener noreferrer"> Maze Mayhem - Rocket Rumble: (click here to check it out)</a>
 
 		<br class = "dont-print">
 
@@ -89,15 +89,15 @@
 
 		<p> I've composed some music in various genres, including rock, disco, and classical. A few highlights are included below:</p>
 
-		<a href="https://youtu.be/BEfijj0oqMM" class="text-link">Thursday Afternoon Meditations: (click here to listen) </a>
+		<a href="https://youtu.be/BEfijj0oqMM" class="text-link" target="_blank" rel="noopener noreferrer">Thursday Afternoon Meditations: (click here to listen) </a>
 
 		<br class = "dont-print"><br class = "dont-print">
 
-		<a href="https://youtu.be/9VNIhaLOq7E" class="text-link">Piece on the Theme of Struggle: (click here to listen)</a>
+		<a href="https://youtu.be/9VNIhaLOq7E" class="text-link" target="_blank" rel="noopener noreferrer">Piece on the Theme of Struggle: (click here to listen)</a>
 
 		<br class = "dont-print"><br class = "dont-print">
 
-		<a href='https://youtube.com/playlist?list=PLERg3naGdTUlENi0HrMVSpsb_PSutjCQG' class="text-link"> More of my music can be found by clicking here! </a>
+		<a href='https://youtube.com/playlist?list=PLERg3naGdTUlENi0HrMVSpsb_PSutjCQG' class="text-link" target="_blank" rel="noopener noreferrer"> More of my music can be found by clicking here! </a>
 
 		<br class = "dont-print">
 		<br class = "dont-print">
