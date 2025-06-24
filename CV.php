@@ -85,16 +85,22 @@
 		<h3>Keyboard player with The Brewers (2021-current)</h3>
 		<p>I play keys with ‘The Brewers’, a local blues band known for ‘full-bodied blues’.</p>
 
-		<!-- Personal Interests -->
-		<h2>Personal Interests</h2>
-		<p>My two main interests are music and technology. I have created a few short musical compositions, as well as some IT projects.</p>
+		<h3>Composition: </h3>
 
-		<h3>Pieces I've written:</h3>
+		<p> I've composed some music in various genres, including rock, disco, and classical. A few highlights are included below:</p>
+
 		<a href="https://youtu.be/BEfijj0oqMM" class="text-link">Thursday Afternoon Meditations: (click here to listen) </a>
 
 		<br class = "dont-print"><br class = "dont-print">
 
 		<a href="https://youtu.be/9VNIhaLOq7E" class="text-link">Piece on the Theme of Struggle: (click here to listen)</a>
+
+		<br class = "dont-print"><br class = "dont-print">
+
+		<a href='https://youtube.com/playlist?list=PLERg3naGdTUlENi0HrMVSpsb_PSutjCQG' class="text-link"> More of my music can be found by clicking here! </a>
+
+		<br class = "dont-print">
+		<br class = "dont-print">
 	</div>
 
 	<div class="links">
