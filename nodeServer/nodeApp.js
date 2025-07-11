@@ -40,11 +40,6 @@ const g_fontstrings = [
 
 var g_fonts = [];
 
-window.onload=function() {
-	var printCVButton = document.querySelector('button#print-cv-button');
-	printCVButton.onclick = printCVFunc;
-}
-
 function getFontInfoFromNodeName(nodeName) {
 	var fontInfo = {};
 	switch (nodeName) {
