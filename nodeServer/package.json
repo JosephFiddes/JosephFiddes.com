@@ -1,0 +1,6 @@
+{
+  "name": "createMyCV",
+  "author": "Joseph Fiddes",
+  "main": "nodeApp.js",
+  "type": "module"
+}
