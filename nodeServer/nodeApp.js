@@ -1,4 +1,6 @@
-const http = require('http');
+import http from 'http'
+import {PDFDocument, StandardFonts, rgb, PageSizes, breakTextIntoLines, PDFString} from 'pdf-lib'
+
 const port = 2345;
 
 const server = http.createServer(function(req, res) {
@@ -18,7 +20,6 @@ server.listen(port, function(error) {
 // - Handle lists.
 
 // PDFLib comes from pdf-lib.js
-import {PDFDocument, StandardFonts, rgb, PageSizes, breakTextIntoLines, PDFString} from 'pdf-lib'
 
 const g_textColorR = 0;
 const g_textColorG = 0.05;
