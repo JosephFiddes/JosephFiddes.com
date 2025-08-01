@@ -7,3 +7,7 @@ _bIsLocal.txt
 # Server-side files.
 .htaccess
 error_log
+
+# Node
+nodeServer/node_modules
+nodeServer/package-lock.json
