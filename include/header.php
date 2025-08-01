@@ -28,6 +28,14 @@ TODO:
 	<link rel="icon" href="./favicon.ico" type="image/x-icon">
 
 	<link rel="stylesheet" type="text/css" href="main.css">
+
+	<!-- Allows iframes to be resized such that their height matches their width -->
+	<script>
+	  function resizeIframe(obj) {
+	    obj.style.height = obj.parentElement.scrollWidth * (1080 / 1720) + 'px';
+	  }
+	</script>
+
 </head>
 
 <!-- Welcome, my fellow hackers ;) -->

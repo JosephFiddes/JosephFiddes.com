@@ -11,7 +11,25 @@
 					<h1>Welcome!</h1>
 					<p>You have arrived at my website. My name is Joseph Fiddes, and I am using this website as a hub for my various creative projects.</p>
 					
-					<p>Watch this space - I plan to put something fun here.</p>
+					<h2>Twitch Stream</h2>
+
+					<p>A live stream of completely improvised music. There are no rehearsals, no plans, no sheets, and nothing pre-recorded.</p>
+
+					<p>Will it transcend all previous music? Or will it be an unlistenable trainwreck? There is only one way to find out.</p>
+
+					<!-- Value of parent dynamic to webpage (whether at josephfiddes.com or at localhost -->
+					<?php
+					    echo '	
+					    <div>
+							<iframe
+							    src="https://player.twitch.tv/?channel=joseph_fiddes&parent=' .  
+							    	$_SERVER['HTTP_HOST'] . '" 
+							    width="100%"
+							    onload="resizeIframe(this)"
+							    allowfullscreen>
+							</iframe>
+						</div>';
+					?>
 				</div>
 
 				<div class="videos">
