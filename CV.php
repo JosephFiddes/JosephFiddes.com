@@ -33,11 +33,33 @@
 		<h3>Diploma in Music (The University of Melbourne) (2019-2022)</h3>
 		<p>My Weighted Average Mark for this course was 84.167</p>
 
-		<!-- Engineering -->
-		<h2>Engineering </h2>
+		<!-- Employment History -->
+		<h2> Employment History </h2>
 
-		<h3>Software Engineering Intern at CSIRO (July-October 2023)</h3>
+		<h3>Software Engineering Intern - CSIRO Data61 (July-October 2023)</h3>
+
 		<p> I was creating an inter-process visualisation program between CSIRO's Workspace and Epic Games' Unreal Engine 5, in order to facilitate high quality rendering of scientific data.</p>
+
+		<h3>Online Content Creator - Independent (2025-current)</h3>
+		<p> I host a weekly music live-stream where I play multi-track improvised music.</p>
+
+		<h3>Pianist - Fairway Bayside Age Care (2019-2023)</h3>
+		<p>I played piano once a fortnight at Fairway Bayside Age Care. This job required required the ability to learn new material quickly, as well as adapt on the fly to performance situations.</p>
+
+		<h3>Percussionist - Melbourne Youth Orchestra (2019-2022)</h3>
+		<p>I played percussion in the Melbourne Youth Orchestra. Percussion set-ups are often complex, and rehearsal time was limited. This role required quick-thinking and leadership skills.</p>
+
+		<h3>Keyboard Player - The Brewers (2021-2025)</h3>
+		<p>I played keys with ‘The Brewers’, a local blues band known for ‘full-bodied blues’.</p>
+
+		<h3>Organist - Sacred Heart Parish Church and Our Lady of the Assumption Church (2017-2019)</h3>
+
+		<p>Provided musical accompaniment to mass at these two churches. This job required both an ability to lead and an ability to follow the congregation.</p>
+
+		<h3>Piano Tutor - Independent (2017-2018)</h3>
+
+		<p>Provided casual piano tutoring to a few homes in my residential area.</p>
+
 
 		<!-- Skills -->
 		<h2>Skills</h2>
@@ -61,7 +83,7 @@
 
 		<p>I've also converted CT scans into a rough 3D model of my own brain.</p>
 
-		<p>I am also skilled with Microsoft Excel, and have created spreadsheets with macros utilising VBA. For example, I created a program in excel which calculates the number of university credits I earned for groups of university subjects, ensuring I did not enrol in the incorrect amount of subjects within a particular category.</p>
+		<p>I am experienced with the Microsoft Office Suite. I am skilled with Microsoft Excel, and have created spreadsheets with macros utilising VBA. For example, I created a program in Excel which calculates the number of university credits I earned for groups of university subjects, ensuring I kept up to date with the requirements for my degrees and diploma.</p>
 
 		<p>I have some experience working with the game engines Unity and Unreal. I have also made frequent use of Git.</p>
 
@@ -76,14 +98,7 @@
 		<!-- Music -->
 		<h2>Music</h2>
 
-		<h3>Pianist at Fairway Bayside Age Care (2019-2023)</h3>
-		<p>I played piano once a fortnight at Fairway Bayside Age Care. This job required required the ability to learn new material quickly, as well as adapt on the fly to performance situations.</p>
 
-		<h3>Percussionist with Melbourne Youth Orchestra (2019-2022)</h3>
-		<p>I played percussion in the Melbourne Youth Orchestra. Percussion set-ups are often complex, and rehearsal time was limited. This role required quick-thinking and leadership skills.</p>
-
-		<h3>Keyboard player with The Brewers (2021-current)</h3>
-		<p>I play keys with ‘The Brewers’, a local blues band known for ‘full-bodied blues’.</p>
 
 		<h3>Composition: </h3>
 

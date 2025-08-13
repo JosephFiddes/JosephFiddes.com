@@ -31,6 +31,7 @@ window.onload=function() {
 function getFontInfoFromNodeName(nodeName) {
 	var fontInfo = {};
 	switch (nodeName) {
+		// Header text at top of page.
 		case "HEADER":
 			fontInfo = {
 				fontIndex: 0,
@@ -38,8 +39,12 @@ function getFontInfoFromNodeName(nodeName) {
 				lineGap: 3,
 				sectionGap: 2,
 				bHeading: false,
+				xMargin: 0,
+				prefix: "",
+				suffix: "",
 			};
 			break;
+		// Title
 		case "H1":
 			fontInfo = {
 				fontIndex: 0,
@@ -47,17 +52,25 @@ function getFontInfoFromNodeName(nodeName) {
 				lineGap: 3,
 				sectionGap: 10,
 				bHeading: true,
+				xMargin: 0,
+				prefix: "",
+				suffix: "",
 			};
 			break;
+		// Large section header (e.g. "Tertiary Education", "Employment History", etc.)
 		case "H2":
 			fontInfo = {
-				fontIndex: 0,
+				fontIndex: 2,
 				fontSize: 18,
 				lineGap: 3,
 				sectionGap: 4,
 				bHeading: true,
+				xMargin: 10,
+				prefix: "",
+				suffix: "",
 			};
 			break;
+		// Minor header (e.g. individual jobs/degrees)
 		case "H3":
 			fontInfo = {
 				fontIndex: 1, // Italic
@@ -65,8 +78,12 @@ function getFontInfoFromNodeName(nodeName) {
 				lineGap: 3,
 				sectionGap: 5,
 				bHeading: true,
+				xMargin: 6,
+				prefix: "",
+				suffix: "",
 			};
 			break;
+		// Very minor header
 		case "H4":
 			fontInfo = {
 				fontIndex: 2, // Bold
@@ -74,6 +91,22 @@ function getFontInfoFromNodeName(nodeName) {
 				lineGap: 3,
 				sectionGap: 6,
 				bHeading: true,
+				xMargin: 0,
+				prefix: "",
+				suffix: "",
+			};
+			break;
+		// Element in list
+		case "LI":
+			fontInfo = {
+				fontIndex: 0,
+				fontSize: 12,
+				lineGap: 3,
+				sectionGap: 6,
+				bHeading: false,
+				xMargin: 20,
+				prefix: "- ",
+				suffix: "",
 			};
 			break;
 		default:
@@ -83,6 +116,9 @@ function getFontInfoFromNodeName(nodeName) {
 				lineGap: 3,
 				sectionGap: 6,
 				bHeading: false,
+				xMargin: 0,
+				prefix: "",
+				suffix: "",
 			};
 			break;
 	}
@@ -177,13 +213,24 @@ function drawText(page, lines, elementPos, bLinks, fontInfo, links) {
 }
 
 async function printCVFunc() {
+	// Get array of HTML elements in CV.
 	const CVElement = document.querySelector('div#CV');
-	var CVElementArray = Array.from(CVElement.children);
-	CVElementArray = CVElementArray.filter((element) => {
+	var CVElementArray_pre = Array.from(CVElement.children);
+	CVElementArray_pre = CVElementArray_pre.filter((element) => {
 		return !element.classList.contains("dont-print");
 	});
 
-	//console.log(CVElementArray);
+	// Extract list items from lists.
+	var CVElementArray = [];
+	CVElementArray_pre.forEach((item) => {
+		if (item.nodeName === "UL") {
+			Array.from(item.children).forEach((child) => {
+				CVElementArray.push(child);
+			});
+		} else {
+			CVElementArray.push(item);
+		}
+	});
 
 	const pdfDoc = await PDFLib.PDFDocument.create();
 
@@ -202,6 +249,7 @@ async function printCVFunc() {
 	const textBBHeight = pageHeight - 2 * g_pageTBMargin;
 
 	// Initial loop to prepare text to be added to PDF.
+	// This loop divides long lines into paragraphs, and caches their heights.
 	var elementHeight = 0;
 	var numCVElements = CVElementArray.length;
 	var CVElementsText = [];
@@ -212,8 +260,11 @@ async function printCVFunc() {
 		
 		elementHeight += fontSize;
 
+		var totalText = fontInfo.prefix + CVElementArray[n].innerText + fontInfo.suffix;
+		var elementWidth = textBBWidth - fontInfo.xMargin;
+
 		// Long lines of text need to wrap.
-		var textLines = PDFLib.breakTextIntoLines(CVElementArray[n].innerText, " ", textBBWidth, (text) => {
+		var textLines = PDFLib.breakTextIntoLines(totalText, " ", elementWidth, (text) => {
 			return (g_fonts[fontInfo.fontIndex]).widthOfTextAtSize(text, fontInfo.fontSize);
 		});
 
@@ -227,6 +278,7 @@ async function printCVFunc() {
 			textLines: textLines,
 		});
 	}
+
 	// Print to PDF
 	var bNewPage = false;
 	var elementOffset = 0;
@@ -264,7 +316,7 @@ async function printCVFunc() {
 		var link = bLink ? [CVElementArray[n].href] : false;
 
 		var elementPos = {
-			x: g_pageLRMargin,
+			x: g_pageLRMargin + CVElementsText[n].fontInfo.xMargin,
 			y: pageHeight - g_pageTBMargin - elementOffset,
 		};
 
