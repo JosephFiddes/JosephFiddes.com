@@ -3,8 +3,9 @@ TODO:
 
  - Put something bottom left of screen.
  - Make YouTube video titles clickable.
- - Setup process for automatically updating CV.
  - Decrease size of logos (should be 64x64 at most).
+ - Refactor get_data so that global variables and env don't need to be populated in advance.
+   (see index.php lines 37-53 for an example of the sort of thing that should be removed.)
 -->
 
 <!DOCTYPE html>
