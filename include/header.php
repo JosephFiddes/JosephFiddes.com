@@ -138,7 +138,8 @@ TODO:
 			<a class="button internal" href="CV.php">
 				<table><tr><td>CV</td></tr></table>
 			</a>
-			<a class="button internal" href="contact.php">
+			<a class="button internal" href="mailto:fiddj13@live.com.au
+         ?subject=Sent%20from%20website%3A">
 				<table><tr><td>CONTACT</td></tr></table>
 			</a>
 		</div>
