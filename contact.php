@@ -10,7 +10,7 @@
 
 	<div class="links">
 		<a class="button centred" href="mailto:fiddj13@live.com.au
-         ?subject=Sent%20from%20website%3A">
+         ?subject=Sent%20from%20website%3A" rel="noopener noreferrer">
 			<table>
 				<tr>
 					<td>EMAIL</td>

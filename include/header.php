@@ -64,7 +64,7 @@ TODO:
 					</tr>
 				</table>
 			</a> -->
-			<a class="button" href="redirect/twitch.php" target="_blank">
+			<a class="button" href="redirect/twitch.php" target="_blank" rel="noopener noreferrer">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/twitch_logo.png"></td>
@@ -72,7 +72,7 @@ TODO:
 					</tr>
 				</table>
 			</a>
-			<a class="button" href="redirect/github.php" target="_blank">
+			<a class="button" href="redirect/github.php" target="_blank" rel="noopener noreferrer">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/github_logo.png"></td>
@@ -80,7 +80,7 @@ TODO:
 					</tr>
 				</table>
 			</a>
-			<a class="button" href="redirect/linkedin.php" target="_blank">
+			<a class="button" href="redirect/linkedin.php" target="_blank" rel="noopener noreferrer">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/linkedin_logo.png"></td>
@@ -88,7 +88,7 @@ TODO:
 					</tr>
 				</table>
 			</a>
-			<a class="button" href="redirect/youtube.php" target="_blank">
+			<a class="button" href="redirect/youtube.php" target="_blank" rel="noopener noreferrer">
 				<table>
 					<tr>
 						<td><img class="ext-logo" src="./img/logos/yt_logo.png"></td>
@@ -107,16 +107,16 @@ TODO:
 							<!-- <td><a href="redirect/twitter.php" target="_blank">
 								<img class="ext-logo" src="./img/logos/twitter_logo.png">
 								</a></td> -->
-							<td><a href="redirect/twitch.php" target="_blank">
+							<td><a href="redirect/twitch.php" target="_blank" rel="noopener noreferrer">
 								<img class="ext-logo" src="./img/logos/twitch_logo.png">
 								</a></td>
-							<td><a href="redirect/github.php" target="_blank">
+							<td><a href="redirect/github.php" target="_blank" rel="noopener noreferrer">
 								<img class="ext-logo" src="./img/logos/github_logo.png">
 								</a></td>
-							<td><a href="redirect/linkedin.php" target="_blank">
+							<td><a href="redirect/linkedin.php" target="_blank" rel="noopener noreferrer">
 								<img class="ext-logo" src="./img/logos/linkedin_logo.png">
 								</a></td>
-							<td><a href="redirect/youtube.php" target="_blank">
+							<td><a href="redirect/youtube.php" target="_blank" rel="noopener noreferrer">
 								<img class="ext-logo" src="./img/logos/yt_logo.png">
 								</a></td>
 						</tr>
@@ -126,20 +126,20 @@ TODO:
 
 		<!-- Website links -->
 		<div class="links">
-			<a class="button internal" href="./">
+			<a class="button internal" href="./" rel="noopener noreferrer">
 				<table><tr><td>HOME</td></tr></table>
 			</a>
-			<a class="button internal" href="music.php">
+			<a class="button internal" href="music.php" rel="noopener noreferrer">
 				<table><tr><td>MUSIC</td></tr></table>
 			</a>
-			<!-- <a class="button internal wide-text" href="ondes.php">
+			<!-- <a class="button internal wide-text" href="ondes.php" rel="noopener noreferrer">
 				<table><tr><td>ONDES MARTENOT</td></tr></table>
 			</a> -->
-			<a class="button internal" href="CV.php">
+			<a class="button internal" href="CV.php" rel="noopener noreferrer">
 				<table><tr><td>CV</td></tr></table>
 			</a>
 			<a class="button internal" href="mailto:fiddj13@live.com.au
-         ?subject=Sent%20from%20website%3A">
+         ?subject=Sent%20from%20website%3A" rel="noopener noreferrer">
 				<table><tr><td>CONTACT</td></tr></table>
 			</a>
 		</div>
