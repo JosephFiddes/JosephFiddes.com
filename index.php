@@ -6,7 +6,7 @@
 
 			<div>
 				<div class="blog">
-					<img src="img/hero.png">
+					<!-- <img src="img/hero.png"> -->
 
 					<h1>Welcome!</h1>
 					<p>You have arrived at my website. My name is Joseph Fiddes, and I am using this website as a hub for my various creative projects.</p>
