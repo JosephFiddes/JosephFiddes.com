@@ -29,6 +29,7 @@ Whether or not to include a description with each video.
 include_once 'include/video_info_class.php';
 include_once "include/dbh.inc.php";
 include_once "include/helper.php";
+include_once "include/loadenv.php";
 
 define("API_RETRIEVE_TIME", 60*60); // 1 hour
 
